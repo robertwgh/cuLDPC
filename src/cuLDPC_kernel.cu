@@ -11,7 +11,7 @@
 	
 	Created: 	10/1/2010
 	Revision:	08/01/2013
-				/4/20/2016 prepare for release on Github.
+			/4/20/2016 prepare for release on Github.
 */
 
 #ifndef LDPC_CUDA_KERNEL_CU
