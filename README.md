@@ -12,14 +12,22 @@ This detailed explanation of the algorithm can be found from the following paper
 
 > 3. M. Wu and G. Wang, Massively Parallel Signal Processing for Wireless Communication Systems, GPU Technology Conference (GTC) 2013. March 18-21, 2013, San Jose, California.
 
+## Algorithms
+The code implemented Quasi-cyclic LDPC code decoder. The set up is:
+* 802.16m WiMax and 802.11n
+* Min-sum algorithm and SPA algorithm
+
 ## Disclaimer
 When the code was developed in 2013, the authors used the following development environment: 
 * a PC installing Ubuntu Linux OS
 * Intel i7 CPU
 * 16GB RAM
-* four NVIDIA Titan GPUs
+* four NVIDIA Titan GPUs and one GTX-690 GPU
+* CUDA v4/v5.
 
 The code was debugged based on the above machine. There might be issues directly run the code on older or newer GPUs. Due to the device limitation, we cannot test the code on any other devices. 
+
+The code may not reflect all the optimizations in the paper, but it implemented most of the ideas in the above papers. You can easily tweak the parameters to make the code work for your systems.
 
 The code is provided as is, and it can be used for any purpose, e.g., studying LDPC decoding, perform LDPC-related research, and so on. If you use this code for your research, please cite the papers listed above. 
 
