@@ -4,7 +4,7 @@
 	CUDA implementation of LDPC decoding algorithm.
 	Created: 	10/1/2010
 	Revision:	08/01/2013
-				/4/20/2016 prepare for release on Github.
+			/4/20/2016 prepare for release on Github.
 */
 
 #include <stdio.h>
