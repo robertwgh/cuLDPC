@@ -10,14 +10,15 @@ This detailed explanation of the algorithm can be found from the following paper
 
 > 2. G. Wang, M. Wu, B. Yin and J. R. Cavallaro, "High throughput low latency LDPC decoding on GPU for SDR systems," 2013 IEEE Global Conference on Signal and Information Processing (GlobalSIP), Austin, TX, 2013, pp. 1258-1261.
 
-## Development Environment
+
+## Disclaimer
 When the code was developed in 2013, the authors used the following development environment: 
 * a PC installing Ubuntu Linux OS
 * Intel i7 CPU
 * 16GB RAM
 * four NVIDIA Titan GPUs
 
-Therefore, the code was debugged based on the above machine. There might be issues directly run the code on older or newer GPUs. Due to the device limitation, we cannot test the code on any other devices. 
+The code was debugged based on the above machine. There might be issues directly run the code on older or newer GPUs. Due to the device limitation, we cannot test the code on any other devices. 
 
 The code is provided as is, and it can be used for any purpose, e.g., studying LDPC decoding, perform LDPC-related research, and so on. If you use this code for your research, please cite the papers listed above. 
 
