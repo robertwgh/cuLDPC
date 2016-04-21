@@ -6,9 +6,9 @@ This is a CUDA-based software implementation of LDPC decoding algorithm. The cod
 
 This detailed explanation of the algorithm can be found from the following papers:
 
-	1. G. Wang, M. Wu, Y. Sun and J. R. Cavallaro, "A massively parallel implementation of QC-LDPC decoder on GPU," 2011 IEEE 9th Symposium on Application Specific Processors (SASP), San Diego, CA, 2011, pp. 82-85.
-	
-	2. G. Wang, M. Wu, B. Yin and J. R. Cavallaro, "High throughput low latency LDPC decoding on GPU for SDR systems," 2013 IEEE Global Conference on Signal and Information Processing (GlobalSIP), Austin, TX, 2013, pp. 1258-1261.
+> 1. G. Wang, M. Wu, Y. Sun and J. R. Cavallaro, "A massively parallel implementation of QC-LDPC decoder on GPU," 2011 IEEE 9th Symposium on Application Specific Processors (SASP), San Diego, CA, 2011, pp. 82-85.
+
+> 2. G. Wang, M. Wu, B. Yin and J. R. Cavallaro, "High throughput low latency LDPC decoding on GPU for SDR systems," 2013 IEEE Global Conference on Signal and Information Processing (GlobalSIP), Austin, TX, 2013, pp. 1258-1261.
 
 ## Development Environment
 When the code was developed in 2013, the authors used the following development environment: 
