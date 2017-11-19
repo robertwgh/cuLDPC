@@ -4,7 +4,7 @@
 	CUDA implementation of LDPC decoding algorithm.
 	Created: 	10/1/2010
 	Revision:	08/01/2013
-			/4/20/2016 prepare for release on Github.
+	/4/20/2016 prepare for release on Github.
 */
 
 #ifndef LDPC_H
@@ -24,8 +24,8 @@
 // Simulation parameters
 #define NUM_SNR 1
 static float snr_array[NUM_SNR] = {3.0f};
-#define MIN_FER         2000000
-#define MIN_CODEWORD    9000000
+#define MIN_FER         2000000 //2000000
+#define MIN_CODEWORD    9000000 // 9000000
 #define MAX_ITERATION 5
 #define DEBUG_BER	NO
 
@@ -35,19 +35,24 @@ static float snr_array[NUM_SNR] = {3.0f};
 #define MCW 100
 #define MAX_SIM 500
 
-#define MEASURE_CPU_TIME	YES		// whether measure time and throughput
-#define MEASURE_CUDA_TIME	NO		// whether measure CUDA memory transfer time and CUDA kernel time
-//#	define DISPLAY_BER	
+// measure time and throughput
+#define MEASURE_CPU_TIME YES
+
+// measure CUDA memory transfer time and CUDA kernel time
+#define MEASURE_CUDA_TIME YES
+
+// print the achieved bit error rate
+#define DISPLAY_BER YES
 
 // begin debug
-#define	DEBUG_FILE	NO
-#define PRINT_MSG	NO
+#define	DEBUG_FILE NO
+#define PRINT_MSG NO
 // end debug
 
 // Performance optimizations
 #define USE_PINNED_MEM	YES
-#define ETA				NO		//early termination algorithm
-#define ET_MARK			NO
+#define ETA NO // early termination algorithm
+#define ET_MARK	NO
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //	The following settings are fixed.
@@ -89,16 +94,16 @@ static float snr_array[NUM_SNR] = {3.0f};
 
 typedef struct
 {
-	int bit_error;
-	int frame_error;
+  int bit_error;
+  int frame_error;
 } error_result;
 
 typedef struct
 {
-	char x;
-	char y;
-	char value;
-	char valid;
+  char x;
+  char y;
+  char value;
+  char valid;
 } h_element;
 
 #endif
