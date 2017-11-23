@@ -26,13 +26,13 @@
 static float snr_array[NUM_SNR] = {3.0f};
 #define MIN_FER         2000000 //2000000
 #define MIN_CODEWORD    9000000 // 9000000
-#define MAX_ITERATION 5
+#define MAX_ITERATION 10
 #define DEBUG_BER	NO
 
 // Number of streams
-#define NSTREAMS 1
-#define CW 10
-#define MCW 100
+#define NSTREAMS 16
+#define CW 2 // code words per macro codewords
+#define MCW 40 // number of macro codewords
 #define MAX_SIM 500
 
 // measure time and throughput

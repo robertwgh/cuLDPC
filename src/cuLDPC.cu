@@ -355,12 +355,12 @@ int runTest()
           dim3 dimGridKernel3(MCW, CW, 1);
           dim3 dimBlockKernel3(Z, BLK_ROW, 1);
 
-          // initialize cpu timer
+
+
+          // initialize and start the cpu timer
+#if MEASURE_CPU_TIME == 1
           float cpu_run_time = 0.0;
           Timer cpu_timer;
-
-          // start the timer
-#if MEASURE_CPU_TIME == 1
           cpu_timer.start();
 #endif
 
@@ -425,7 +425,7 @@ int runTest()
                   for(int ii = 0; ii < MAX_ITERATION; ii++)
                     {
 		      
-		      // TODO: Is this the check node kernel?
+		      // run check-node processing kernel
 		      // TODO: Why run a special kernel the first iteration?
                       if(ii == 0) {
                         ldpc_cnp_kernel_1st_iter<<<
@@ -450,8 +450,11 @@ int runTest()
 			   threadsPerBlockKernel1);
 		      }
 
-		      // TODO: Is this the variable node kernel?
-		      // TODO: Why a special kernel last iteration?
+		      // run variable-node processing kernel
+		      // for the last iteration we run a special
+		      // kernel. this is because we can make a hard
+		      // decision instead of writing back the belief
+		      // for the value of each bit.
                       if(ii < MAX_ITERATION - 1) {
                         ldpc_vnp_kernel_normal<<<
 			  dimGridKernel2,
@@ -542,7 +545,9 @@ int runTest()
 		 (float) CODEWORD_LEN * MCW * CW * MAX_SIM / time_kernel / 1000);
 	  printf("Throughput (kernel + transer time) = %f Mbps\r\n", 
 		 (float) CODEWORD_LEN * MCW * CW * MAX_SIM / (time_kernel + time_h2d+ time_d2h + time_memset) / 1000);
-	  float bandwidthInMBs = (1e3f * memorySize_llr_cuda ) /  ( (time_h2d/MAX_SIM) * (float)(1 << 20));
+
+	  float bandwidthInMBs = 1e3f * memorySize_llr_cuda;
+	  bandwidthInMBs /= (time_h2d / MAX_SIM) * (float) (1 << 20);
 	  printf("\nh2d (llr): size=%f MB, bandwidthInMBs = %f MB/s\n", 
 		 memorySize_llr_cuda /1e6, bandwidthInMBs);
 	  bandwidthInMBs = (1e3f *  memorySize_hard_decision_cuda) /  ( (time_d2h/MAX_SIM) * (float)(1 << 20));

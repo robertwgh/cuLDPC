@@ -11,7 +11,7 @@
 	
 	Created: 	10/1/2010
 	Revision:	08/01/2013
-			/4/20/2016 prepare for release on Github.
+	/4/20/2016 prepare for release on Github.
 */
 
 #ifndef LDPC_CUDA_KERNEL_CU
@@ -39,12 +39,12 @@ __device__ __constant__ char h_element_count2[BLK_COL] = {11,4, 3, 3,11, 3, 3, 3
 // MIN-SUM Function
 __device__ float F_FUCN_MIN_SUM_DEV(float a, float b)
 {
-  float a_abs ;
-  float b_abs ;
-  float min_ab_abs ;
-  float sign_a ;
-  float sign_b ;
-  float tmp2 ;
+  float a_abs;
+  float b_abs;
+  float min_ab_abs;
+  float sign_a;
+  float sign_b;
+  float tmp;
 
   sign_a = a < 0 ? -1.0f : 1.0f;
   sign_b = b < 0 ? -1.0f : 1.0f;
@@ -52,8 +52,8 @@ __device__ float F_FUCN_MIN_SUM_DEV(float a, float b)
   b_abs = __fmul_rn(sign_b, b);
 
   min_ab_abs = fmin(a_abs, b_abs);
-  tmp2 = sign_a * sign_b * min_ab_abs;
-  return tmp2 ;
+  tmp = sign_a * sign_b * min_ab_abs;
+  return tmp;
 }
 
 // Kernel 1
@@ -168,7 +168,7 @@ __global__ void ldpc_cnp_kernel(float * dev_llr,
   extern __shared__ float RCache[];
   int iRCacheLine = threadIdx.y * blockDim.x + threadIdx.x;
 
-  int	iCW = threadIdx.y; // index of CW in a MCW
+  int iCW = threadIdx.y; // index of CW in a MCW
   int iMCW = blockIdx.y; // index of MCW
   int iCurrentCW = iMCW * CW + iCW;
 
@@ -209,7 +209,7 @@ __global__ void ldpc_cnp_kernel(float * dev_llr,
   offsetR = size_R_CW * iCurrentCW + iBlkRow * Z + iSubRow;
 
   // The 1st recursion
-  //#pragma unroll
+  // TODO: Is s always the same? If so we can unroll the loop with #pragma unroll
   for(int i = 0; i < s; i++) // loop through all the ZxZ sub-blocks in a row
     {
       h_element_t = dev_h_compact1[i][iBlkRow];
@@ -238,7 +238,7 @@ __global__ void ldpc_cnp_kernel(float * dev_llr,
 	  rmin2 = rmin1;
 	  rmin1 = Q_abs;
 	  idx_min = i;
-	}else if (Q_abs < rmin2)
+	} else if (Q_abs < rmin2)
 	{
 	  rmin2 = Q_abs;
 	}
