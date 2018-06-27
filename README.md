@@ -1,5 +1,5 @@
 # cuLDPC
-####CUDA implementation of LDPC decoding algorithm
+#### CUDA implementation of LDPC decoding algorithm
 
 ## Description
 This is a CUDA-based software implementation of LDPC decoding algorithm. The code was developed by the authors for research purpose. 
